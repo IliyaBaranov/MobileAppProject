@@ -2,12 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:provider/provider.dart';
+
 import '../../controllers/favorites_controller.dart';
 import '../../controllers/quote_controller.dart';
+import '../../utils/constants.dart';
 import '../widgets/quote_card.dart';
 import 'favorites_screen.dart';
 import 'login_screen.dart';
-
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -16,7 +17,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Quotes of Jason Statham'),
+        title: Text(jasonStathamQuotes),
         actions: [
           IconButton(
             icon: Icon(Icons.favorite),
@@ -91,7 +92,7 @@ class _FavoriteButton extends StatefulWidget {
 class _FavoriteButtonState extends State<_FavoriteButton> {
   bool _isFavorite = false;
   bool _loading = true;
-  String? _currentQuote; // Для отслеживания изменений цитаты
+  String? _currentQuote;
 
   @override
   void initState() {
@@ -104,7 +105,6 @@ class _FavoriteButtonState extends State<_FavoriteButton> {
   @override
   void didUpdateWidget(_FavoriteButton oldWidget) {
     super.didUpdateWidget(oldWidget);
-    // Если цитата изменилась, сбрасываем состояние
     if (widget.quote != _currentQuote) {
       _currentQuote = widget.quote;
       _checkIfFavorite();
@@ -148,11 +148,11 @@ class _FavoriteButtonState extends State<_FavoriteButton> {
         _isFavorite = true;
       });
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Quote saved to favorites!')),
+        SnackBar(content: Text(quoteSavedToFavoritesMessage)),
       );
     } else if (mounted) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Failed to save quote')),
+        SnackBar(content: Text(failedToSaveQuoteMessage)),
       );
     }
   }
@@ -174,7 +174,7 @@ class _FavoriteButtonState extends State<_FavoriteButton> {
         children: [
           Icon(_isFavorite ? Icons.check : Icons.bookmark_add),
           const SizedBox(width: 8),
-          Text(_isFavorite ? 'Saved' : 'Save to Favorites'),
+          Text(_isFavorite ? savedLabel : saveToFavoritesLabel),
         ],
       ),
     );

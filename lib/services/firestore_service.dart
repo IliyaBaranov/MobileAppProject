@@ -22,7 +22,7 @@ class FirestoreService {
         .collection('quotes')
         .add({
       'quote': quote.text,
-      'timestamp': FieldValue.serverTimestamp(), // **FIXED: Make sure timestamp is added**
+      'timestamp': FieldValue.serverTimestamp(),
     });
   }
 

@@ -24,7 +24,7 @@ class FavoritesController extends ChangeNotifier {
 
       final quote = Quote(id: '', text: quoteText);
       await _firestoreService.addQuoteToFavorites(quote);
-      notifyListeners(); // Уведомляем слушателей об изменении
+      notifyListeners();
       return true;
     } catch (e) {
       debugPrint('Error adding favorite: $e');
@@ -35,7 +35,7 @@ class FavoritesController extends ChangeNotifier {
   Future<void> removeQuoteFromFavorites(String quoteId) async {
     try {
       await _firestoreService.deleteFavoriteQuote(quoteId);
-      notifyListeners(); // Уведомляем слушателей об изменении
+      notifyListeners();
     } catch (e) {
       debugPrint('Error removing favorite: $e');
     }
