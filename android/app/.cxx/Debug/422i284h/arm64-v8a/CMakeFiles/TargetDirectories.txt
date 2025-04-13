@@ -1,0 +1,2 @@
+C:/Users/Graam/StudioProjects/MobileAppProject/android/app/.cxx/Debug/422i284h/arm64-v8a/CMakeFiles/edit_cache.dir
+C:/Users/Graam/StudioProjects/MobileAppProject/android/app/.cxx/Debug/422i284h/arm64-v8a/CMakeFiles/rebuild_cache.dir
