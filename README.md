@@ -59,3 +59,25 @@ AuthController handles both anonymous and Google sign-in with FirebaseAuth and G
 ## Firebase
 
 Firestore is structured with the following path for storing user favorites:
+
+userFavorites -> [userId] -> quotes -> [quote documents]
+
+
+## Quotes Source
+
+Quotes are loaded from a text file:
+
+assets/files/quotes.txt
+
+
+## Widgets
+
+Custom `QuoteCard` widget is used to display quotes consistently throughout the app
+
+## Running the App
+
+Make sure to configure your `firebase_options.dart` and include the necessary `google-services.json` or `GoogleService-Info.plist` files for Firebase integration. Add your `quotes.txt` file to `assets/files/` and update `pubspec.yaml` to include it under `assets`.
+
+---
+
+Enjoy your daily dose of Jason Statham wisdom!
